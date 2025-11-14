@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/edit_mode_provider.dart';
 import '../providers/photos_provider.dart';
 import '../models/database.dart';
+import 'add_photo_flow/photo_source_screen.dart';
 
 /// Main communication board screen with photo grid
 class CommunicationBoardScreen extends StatelessWidget {
@@ -15,10 +16,21 @@ class CommunicationBoardScreen extends StatelessWidget {
         middle: const Text('Stardust'),
         trailing: Consumer<EditModeProvider>(
           builder: (context, editMode, _) {
-            return CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => editMode.toggleEditMode(),
-              child: Text(editMode.isEditMode ? 'Done' : 'Edit'),
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (editMode.isEditMode)
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () => _navigateToAddPhoto(context),
+                    child: const Icon(CupertinoIcons.add),
+                  ),
+                CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () => editMode.toggleEditMode(),
+                  child: Text(editMode.isEditMode ? 'Done' : 'Edit'),
+                ),
+              ],
             );
           },
         ),
@@ -139,6 +151,14 @@ class CommunicationBoardScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _navigateToAddPhoto(BuildContext context) {
+    Navigator.of(context).push(
+      CupertinoPageRoute(
+        builder: (context) => PhotoSourceScreen(),
       ),
     );
   }
