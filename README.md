@@ -4,6 +4,14 @@ An Augmentative and Alternative Communication (AAC) application for iPad, design
 
 Built with love for Milla. ✨
 
+## About This Project
+
+This AAC (Augmentative and Alternative Communication) app was created for Milla, a bright and expressive young girl who communicates in her own unique way. The goal of this project is to give her — and others like her — a voice that feels natural, empowering, and easy to use.
+
+The app is designed with accessibility, speed, and simplicity at its core — intuitive enough for kids, flexible enough for families, and built with love by someone who knows that communication is more than just words.
+
+If you’d like to contribute, test, or adapt this for someone in your own life, you’re warmly welcome. The goal is to keep improving how we help people express themselves — one tap, one phrase, one smile at a time.
+
 ## What is AAC?
 
 Augmentative and Alternative Communication (AAC) helps people with speech and language challenges communicate. This app uses pictures with labels that can be spoken aloud, helping bridge communication gaps.
