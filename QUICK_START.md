@@ -1,6 +1,6 @@
 # Quick Start Guide - Stardust AAC
 
-This guide will help you go from planning to development on Windows.
+This guide will help you go from planning to Flutter development on Windows.
 
 ---
 
@@ -198,7 +198,7 @@ flutter run -d <device-id>
 
 - [ ] Create Drift database configuration in `models/database.dart`
 - [ ] Define Photos table with Drift
-- [ ] Create `DatabaseService` wrapper
+- [ ] Run build_runner to generate database code
 - [ ] Implement save photo with label
 - [ ] Implement fetch all photos
 - [ ] Display real photos in grid using StreamBuilder
@@ -245,7 +245,7 @@ flutter run -d <device-id>
 - [ ] Create multi-step add photo sheet
 - [ ] Step 1: Photo source selection
 - [ ] Step 2: Label entry
-- [ ] Step 3: Save to Core Data
+- [ ] Step 3: Save to Drift database
 - [ ] Test complete flow
 
 **Goal:** Add photo with label through UI
@@ -351,23 +351,27 @@ flutter run -d <device-id>
 
 **"Signing for StardustAAC requires a development team"**
 
-- Solution: Select your Apple ID under Signing & Capabilities > Team
+- Solution: Add your Apple ID in Xcode (Rick's Mac only for final build)
 
 **"Failed to launch app on device"**
 
-- Solution: Enable Developer Mode on iPad (Settings > Privacy & Security)
+- Solution: Enable Developer Mode on iPad (Settings > Privacy & Security > Developer Mode)
 
 **"Camera permission denied"**
 
-- Solution: Add NSCameraUsageDescription to Info.plist
+- Solution: Verify NSCameraUsageDescription exists in ios/Runner/Info.plist
 
 **"App crashes when tapping tile"**
 
-- Solution: Check AudioService initialization, ensure AVSpeechSynthesizer is set up
+- Solution: Check AudioService initialization, ensure flutter_tts is initialized
 
 **"Photos not persisting"**
 
-- Solution: Verify Core Data save is being called, check for errors
+- Solution: Verify Drift database save is being called, check for errors in console
+
+**"Build runner fails"**
+
+- Solution: Run `flutter clean` then `flutter pub get` then `dart run build_runner build --delete-conflicting-outputs`
 
 **"Recording not working"**
 
@@ -379,21 +383,22 @@ flutter run -d <device-id>
 
 ### Essential Documentation
 
-- [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui) - Apple's official tutorials
-- [Core Data](https://developer.apple.com/documentation/coredata) - Data persistence
-- [AVFoundation](https://developer.apple.com/av-foundation/) - Audio and camera
+- [Flutter Documentation](https://docs.flutter.dev/) - Official Flutter docs
+- [Dart Language Tour](https://dart.dev/guides/language/language-tour) - Dart basics
+- [Drift Documentation](https://drift.simonbinder.eu/docs/) - Database package
+- [Cupertino Widgets](https://docs.flutter.dev/ui/widgets/cupertino) - iOS-style widgets
 - [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios) - iOS design
 
 ### Recommended Tutorials
 
-- [Hacking with Swift - 100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui) - Free course
-- [Stanford CS193p](https://cs193p.sites.stanford.edu/) - SwiftUI course
-- [Paul Hudson's SwiftUI by Example](https://www.hackingwithswift.com/quick-start/swiftui) - Quick reference
+- [Flutter Codelabs](https://docs.flutter.dev/codelabs) - Hands-on tutorials
+- [Flutter Widget of the Week](https://www.youtube.com/playlist?list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG) - Video series
+- [Reso Coder Flutter Tutorials](https://resocoder.com/) - Clean architecture
 
 ### Video Resources
 
-- WWDC sessions on SwiftUI, Core Data, AVFoundation
-- YouTube channels: Sean Allen, Kavsoft, Stewart Lynch
+- Flutter official YouTube channel
+- YouTube channels: Reso Coder, The Flutter Way, Robert Brunhage
 
 ---
 
@@ -425,36 +430,37 @@ flutter run -d <device-id>
 
 ### Daily Workflow
 1. Start with small, testable changes
-2. Build and run frequently (⌘R)
-3. Test on simulator after each feature
+2. Build and run frequently (flutter run)
+3. Use hot reload (r) and hot restart (R) during development
 4. Commit to git after working features
-5. Test on device at end of day
+5. Test on device regularly
 
 ### Code Organization
 - Keep files small and focused
-- Separate views, view models, and services
+- Separate widgets, providers, and services
 - Use meaningful variable names
 - Comment complex logic
-- Follow Swift naming conventions
+- Follow Dart naming conventions (camelCase for variables, PascalCase for classes)
 
-### SwiftUI Best Practices
-- Use `@State` for view-local state
-- Use `@StateObject` for view models
-- Use `@EnvironmentObject` for shared state
-- Keep views small and composable
-- Preview in Xcode canvas frequently
+### Flutter Best Practices
+- Use `StatelessWidget` when possible
+- Use `const` constructors for performance
+- Leverage Provider for state management
+- Keep widgets small and composable
+- Use StreamBuilder for reactive database updates
+- Run `flutter analyze` regularly
 
-### Core Data Best Practices
-- Use background contexts for heavy operations
-- Save context after changes
+### Drift Best Practices
+- Use streams (watch*) for reactive UI
+- Await all database operations
 - Handle errors gracefully
-- Use fetch requests efficiently
+- Run build_runner after schema changes
 - Test with sample data first
 
 ### Audio Best Practices
-- Request permissions early
+- Request permissions early with permission_handler
 - Handle permission denial gracefully
-- Configure audio session properly
+- Initialize audio services in main()
 - Test with device sound on/off
 - Handle interruptions (phone calls)
 
@@ -463,18 +469,19 @@ flutter run -d <device-id>
 ## 📞 Getting Help
 
 ### When Stuck
-1. Check error messages in Xcode console
-2. Search Apple Developer Forums
-3. Search Stack Overflow
-4. Review project documentation (SUMMARY.md, PROJECT_PLAN.md)
+1. Check error messages in terminal/debug console
+2. Search Flutter documentation and pub.dev
+3. Search Stack Overflow (tag: flutter)
+4. Review project documentation (SETUP_COMPLETE.md, PROJECT_PLAN.md)
 5. Break problem into smaller parts
 6. Try simplest solution first
 
 ### Useful AI Prompts
-- "How do I implement [feature] in SwiftUI?"
-- "Why is my Core Data save not working?"
-- "How to handle camera permissions in iOS?"
-- "SwiftUI grid layout best practices"
+- "How do I implement [feature] in Flutter?"
+- "Why is my Drift database save not working?"
+- "How to handle camera permissions in Flutter?"
+- "Flutter GridView layout best practices"
+- "Flutter Provider state management example"
 
 ---
 
@@ -518,4 +525,11 @@ flutter run -d <device-id>
 
 ---
 
-Ready to start? Open Xcode and create that project! 🚀
+Ready to start? The Flutter project is already set up in the `stardust/` directory! 🚀
+
+Just run:
+```powershell
+cd stardust
+flutter pub get
+flutter run
+```

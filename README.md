@@ -42,7 +42,33 @@ This app is designed to be:
 
 ## Development Setup
 
-_Coming soon - will include Xcode setup, dependencies, and build instructions._
+### Prerequisites
+- Windows 10/11 PC (or Mac)
+- Flutter SDK 3.16+ ([Install Flutter](https://flutter.dev/docs/get-started/install))
+- VS Code with Flutter extension (recommended) or Android Studio
+- iPad with iOS 12+ for testing
+- USB cable to connect iPad
+- iTunes (for iPad drivers on Windows)
+
+### Quick Start
+
+```powershell
+# Clone the repository
+git clone https://github.com/dreamstarter/stardust-aac.git
+cd stardust-aac/stardust
+
+# Install dependencies
+flutter pub get
+
+# Generate database code
+dart run build_runner build --delete-conflicting-outputs
+
+# Connect iPad via USB and run
+flutter devices
+flutter run -d <device-id>
+```
+
+See [SETUP_COMPLETE.md](SETUP_COMPLETE.md) for detailed setup information.
 
 ## Contributing
 

@@ -25,7 +25,7 @@ This document summarizes the planning work completed for **Stardust AAC**, an iP
 - 🎙️ Custom 5-second audio recordings (parent's voice)
 - 🤖 iOS text-to-speech voices
 
-**Platform:** Native iOS (iPad) with Swift + SwiftUI
+**Platform:** iOS (iPad) built with Flutter + Dart
 
 ---
 
@@ -144,7 +144,7 @@ class AppSettings {
 2. Label validation: Strict single-word or guidance only?
 3. Category timing: MVP or Phase 5?
 4. Photo editing: Crop/rotate needed?
-5. Development environment: Do you have Mac + Xcode?
+5. Development environment: Windows PC with Flutter SDK (Rick's Mac for final build)
 
 ---
 
@@ -211,11 +211,12 @@ Tap tile → Enlarges + plays audio → Auto-closes
   - Similar AAC app with proven UX patterns
   - Analyzed in `SPEECH_ALBUM_ANALYSIS.md`
 
-### Apple Documentation
+### Documentation
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [Drift Database](https://drift.simonbinder.eu/docs/)
+- [flutter_tts Package](https://pub.dev/packages/flutter_tts)
+- [record Package](https://pub.dev/packages/record)
 - [iOS Accessibility](https://developer.apple.com/accessibility/)
-- [AVSpeechSynthesizer](https://developer.apple.com/documentation/avfaudio/speech_synthesis)
-- [AVAudioRecorder](https://developer.apple.com/documentation/avfaudio/avaudiorecorder)
-- [Core Data](https://developer.apple.com/documentation/coredata)
 
 ### AAC Resources
 - [ASHA AAC Portal](https://www.asha.org/practice-portal/professional-issues/augmentative-and-alternative-communication/)
@@ -243,18 +244,18 @@ Tap tile → Enlarges + plays audio → Auto-closes
 
 ### Before Development
 1. ✅ Review `DECISIONS.md` and make final decisions
-2. ⬜ Confirm development environment (Mac + Xcode)
+2. ⬜ Confirm Flutter SDK installed on Windows
 3. ⬜ Get test iPad ready
 4. ⬜ Review Speech Album app for UX inspiration (optional)
 
 ### Starting Development
-1. ⬜ Install Flutter SDK on Windows
-2. ⬜ Create Flutter project
-3. ⬜ Set up Drift database model
-4. ⬜ Create basic UI with Cupertino widgets
+1. ✅ Flutter SDK installed on Windows
+2. ✅ Flutter project created in `stardust/` directory
+3. ✅ Drift database model set up
+4. ✅ Basic UI created with Cupertino widgets
 5. ⬜ Implement photo capture (image_picker)
-6. ⬜ Build grid view (GridView.builder)
-7. ⬜ Add TTS integration (flutter_tts)
+6. ✅ Grid view built (GridView.builder)
+7. ✅ TTS integration added (flutter_tts)
 
 ### Testing with Milla
 1. ⬜ Add 5-10 meaningful photos

@@ -40,12 +40,13 @@
 
 ## Technical Architecture
 
-### Technology Stack Options
+### Technology Stack
 
-#### Option 1: Flutter (Recommended)
+**Selected:** Flutter + Dart
+
 - **Language:** Dart
-- **UI Framework:** Flutter (Cupertino widgets for iOS look)
-- **Pros:**
+- **UI Framework:** Flutter (Cupertino widgets for iOS-native look)
+- **Benefits:**
   - Develop on Windows without Mac required
   - Excellent performance (compiled to native ARM code)
   - Hot reload for fast development iteration
@@ -54,29 +55,10 @@
   - Beautiful, native-feeling iPad UI with Cupertino widgets
   - Single codebase for potential future Android version
   - Can test directly on iPad via USB from Windows
-- **Cons:**
-  - Requires Mac for final App Store build (Rick can help)
-  - Slightly larger app size than pure native
-
-#### Option 2: React Native
-- **Pros:**
-  - JavaScript/TypeScript familiarity
-  - Expo Go for easy preview
-  - Large community
-- **Cons:**
-  - Performance overhead with JavaScript bridge
-  - More complex native module integration
-  - Requires Mac for final build
-
-#### Option 3: Native iOS (Swift)
-- **Pros:**
-  - Best performance and native feel
-  - Direct iOS API access
-- **Cons:**
-  - Requires Mac for all development
-  - Not feasible with current setup
-
-**Recommendation:** Flutter for excellent performance, Windows development capability, and beautiful iPad UI. Rick's Mac only needed for final App Store submission.
+  - Rick's Mac only needed for final App Store submission
+- **Trade-offs:**
+  - Slightly larger app size than pure native iOS
+  - Requires understanding of Dart (similar to JavaScript/TypeScript/Java)
 
 ### Data Model
 
@@ -310,10 +292,10 @@ Long press → edit options
 
 ## Next Steps
 
-1. Set up Xcode project with SwiftUI
-2. Create basic UI mockups
-3. Implement photo capture/selection
-4. Build Core Data model
-5. Develop MVP with TTS only
-6. User test with Milla
-7. Iterate based on feedback
+1. ✅ Set up Flutter project with Cupertino widgets
+2. ✅ Create basic UI structure
+3. ⬜ Implement photo capture flow (image_picker)
+4. ✅ Drift database model created
+5. ⬜ Complete MVP with TTS functionality
+6. ⬜ User test with Milla
+7. ⬜ Iterate based on feedback
